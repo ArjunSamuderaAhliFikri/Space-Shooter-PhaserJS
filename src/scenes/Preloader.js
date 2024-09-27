@@ -44,15 +44,39 @@ export class Preloader extends Scene {
     // logo primary
     this.load.image("logo-primary", "atribut/primary-logo.png");
     this.load.image("background-game", "background/background-game-menu.png");
+    this.load.image("background-game-1", "background/background-game-1.png");
+    this.load.image("background-game-2", "background/background-game-2.png");
+    this.load.image("background-game-3", "background/background-game-3.png");
+
+    // background game over
+    this.load.image("background-gameover-1", "background/Game-Over-1.jpg");
+    this.load.image(
+      "background-gameover-2",
+      "background/background-game-over-2.jpg"
+    );
+    // this.load.image("background-gameover-3", "background/Game-Over-1.jpg");
 
     // player
-    this.load.setPath("assets");
 
-    this.load.image("player-blue", "player/player-blue.png");
+    this.load.image("player-blue", "player/pesawat-2.png");
+    this.load.image("health-point", "player/health-point-player.png");
+
     this.load.image("laser-blue", "laser/laser-blue.png");
+    this.load.image("bullet", "atribut/bullet7.png");
     this.load.image("meteor", "atribut/meteor.png");
 
+    this.load.image("thrust", "atribut/effect_yellow.png");
+    this.load.image("ufo-red", "enemy/ufoRed.png");
+
+    // explosion reference
+    this.load.image("explosion-1", "atribut/explosion-removebg-1.png");
+    this.load.image("explosion-2", "atribut/explosion-removebg-2.png");
+
+    // fire blue for player
+    this.load.image("fire-blue", "atribut/fire-blue-removebg.png");
+
     this.load.image("destroy-ship", "destroy/destroy-player.png");
+    this.load.audio("main-menu-audio", "audio/main-menu.mp3");
   }
 
   create() {

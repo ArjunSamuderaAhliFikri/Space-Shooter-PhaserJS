@@ -12,7 +12,7 @@ const config = {
   height: 768,
   parent: "game-container",
   physics: {
-    gravity: { x: 0 },
+    gravity: { x: 10 },
     default: "arcade",
     arcade: {
       debug: true,

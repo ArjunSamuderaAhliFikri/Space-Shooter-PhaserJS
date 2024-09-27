@@ -6,6 +6,8 @@ export class MainMenu extends Scene {
   }
 
   create() {
+    this.menuSong = this.sound.add("main-menu-audio");
+    this.menuSong.play();
     this.imageStart = ["start-game-1", "start-game-2"];
 
     this.cursor = this.input.keyboard.createCursorKeys();
@@ -15,14 +17,14 @@ export class MainMenu extends Scene {
     this.currentNumber = 0;
 
     this.backgroundMenu = this.add
-      .tileSprite(0, 0, 512, 384, "background-menu")
+      .tileSprite(0, 0, 512, 384, "background-game-3")
       .setScale(3);
 
     this.backgroundMenu.setOrigin(0, 0);
 
     // generate font start
     this.textStart = this.add
-      .sprite(750, 600, "start-game-1")
+      .sprite(750, 600, "start-game-2")
       .setScale(0.5)
       .setAlpha(1);
 
@@ -46,7 +48,11 @@ export class MainMenu extends Scene {
       .setScale(0.8);
     this.pesawatLuarAngkasa.flipX = true;
 
-    this.add.image(750, 300, "logo-primary").setScale(1.1);
+    this.logoPrimary = this.add.image(750, 300, "logo-primary").setScale(1.1);
+    this.logoPrimary.setInteractive();
+    this.logoPrimary.on("pointerdown", () => {
+      this.scene.start("PlayGame");
+    });
 
     setInterval(() => {
       if (this.currentPositionSpace == 0) {
@@ -106,6 +112,6 @@ export class MainMenu extends Scene {
     this.meteor.angle += 1;
     this.meteor.y += 0;
     this.meteor.x -= 2;
-    this.backgroundMenu.tilePositionY -= 0.9;
+    this.backgroundMenu.tilePositionX -= 0.9;
   }
 }
