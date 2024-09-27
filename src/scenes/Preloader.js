@@ -42,7 +42,7 @@ export class Preloader extends Scene {
     this.load.image("pesawat-luar-angkasa", "atribut/pesawat.png");
 
     // logo primary
-    this.load.image("logo-primary", "atribut/primary-logo.png");
+    this.load.image("logo-primary", "atribut/Logo-primary-removebg.png");
     this.load.image("background-game", "background/background-game-menu.png");
     this.load.image("background-game-1", "background/background-game-1.png");
     this.load.image("background-game-2", "background/background-game-2.png");
@@ -58,25 +58,45 @@ export class Preloader extends Scene {
 
     // player
 
-    this.load.image("player-blue", "player/pesawat-2.png");
+    this.load.image("player-blue", "player/Ship-1.png");
+    this.load.image("player-blue-2", "player/Ship-2.png");
+    this.load.image("player-blue-3", "player/Ship-3.png");
+    this.load.image("player-blue-4", "player/Ship-4.png");
+
     this.load.image("health-point", "player/health-point-player.png");
 
     this.load.image("laser-blue", "laser/laser-blue.png");
-    this.load.image("bullet", "atribut/bullet7.png");
     this.load.image("meteor", "atribut/meteor.png");
 
-    this.load.image("thrust", "atribut/effect_yellow.png");
+    // enemy
     this.load.image("ufo-red", "enemy/ufoRed.png");
+    this.load.image("enemy-1", "enemy/enemy-1-removebg.png");
+    this.load.image("enemy-2", "enemy/enemy-2-removebg.png");
 
     // explosion reference
     this.load.image("explosion-1", "atribut/explosion-removebg-1.png");
     this.load.image("explosion-2", "atribut/explosion-removebg-2.png");
 
+    this.load.image("game-over-logo", "atribut/game-over-logo-remove.png");
+    this.load.image("continue-logo", "atribut/continue-logo-remove.png");
+    this.load.image("score-logo", "atribut/score-logo-remove.png");
+
     // fire blue for player
     this.load.image("fire-blue", "atribut/fire-blue-removebg.png");
 
     this.load.image("destroy-ship", "destroy/destroy-player.png");
+
     this.load.audio("main-menu-audio", "audio/main-menu.mp3");
+    this.load.audio("sound-laser", "sound effect/sound-laser.mp3");
+    this.load.audio("in-game-song", "sound effect/in-game-song.mp3");
+    this.load.audio("game-over-song", "sound effect/game-over-song.mp3");
+    this.load.audio("start-game", "sound effect/game-start.mp3");
+    this.load.audio("damage-player", "sound effect/destroy-player.mp3");
+
+    this.load.image("continue-game-over", "screnn/continue-final.png");
+    this.load.image("mainmenu-game-over", "screnn/main-menu-final.png");
+
+    this.load.image("loading-logo", "screnn/Loading-Font.png");
   }
 
   create() {

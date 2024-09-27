@@ -10,28 +10,49 @@ export class GameOver extends Scene {
   }
 
   create() {
+    this.startGame = this.sound.add("start-game", { loop: true });
+    this.gameOverSong = this.sound.add("game-over-song", { loop: true });
+    this.gameOverSong.play();
     this.backgroundGameOver = this.add
       .tileSprite(750, 384, 750, 384, "background-gameover-1")
       .setScale(2);
-    // this.add.image(512, 384, 'background').setAlpha(0.5);
 
-    this.isScore = this.add.text(750, 500, this.score, {
-      fontSize: 50,
-      color: "0xfff",
-    });
-    this.add
-      .text(750, 384, "Game Over", {
-        fontFamily: "Arial Black",
-        fontSize: 64,
-        color: "#ffffff",
-        stroke: "#000000",
-        strokeThickness: 8,
-        align: "center",
-      })
-      .setOrigin(0.5);
+    this.gameOverLogo = this.add
+      .image(750, 300, "game-over-logo")
+      .setScale(1.3);
 
-    this.input.once("pointerdown", () => {
+    this.mainMenuLogo = this.add
+      .image(550, 600, "mainmenu-game-over")
+      .setScale(0.6)
+      .setInteractive();
+
+    this.mainMenuLogo.on("pointerdown", () => {
+      this.startGame.play();
+      this.gameOverSong.stop();
+      setTimeout(() => {
+        this.startGame.stop();
+      }, 750);
       this.scene.start("MainMenu");
+    });
+
+    this.continueLogo = this.add
+      .image(950, 600, "continue-game-over")
+      .setScale(0.6)
+      .setInteractive();
+
+    this.continueLogo.on("pointerdown", () => {
+      this.startGame.play();
+      this.gameOverSong.stop();
+      setTimeout(() => {
+        this.startGame.stop();
+      }, 750);
+      this.scene.start("PlayGame");
+    });
+
+    this.isScore = this.add.text(620, 485, `High Score : ${this.score}`, {
+      fontFamily: "Arial Black",
+      fontSize: 32,
+      fill: "#ffff",
     });
   }
 

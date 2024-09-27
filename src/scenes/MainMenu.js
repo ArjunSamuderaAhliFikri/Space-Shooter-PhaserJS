@@ -6,7 +6,8 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    this.menuSong = this.sound.add("main-menu-audio");
+    this.menuSong = this.sound.add("main-menu-audio", { loop: true });
+    this.startGameSound = this.sound.add("start-game", { loop: true });
     this.menuSong.play();
     this.imageStart = ["start-game-1", "start-game-2"];
 
@@ -30,11 +31,6 @@ export class MainMenu extends Scene {
 
     this.textStart.setInteractive();
 
-    this.textStart.on("pointerdown", () => {
-      alert("32: hello world!");
-      this.scene.start("PlayGame");
-    });
-
     this.ufo = this.add.image(200, 200, "ufo").setScale(0.4);
     this.ufo.flipX = true;
     this.ufo.x = -100;
@@ -49,12 +45,9 @@ export class MainMenu extends Scene {
     this.pesawatLuarAngkasa.flipX = true;
 
     this.logoPrimary = this.add.image(750, 300, "logo-primary").setScale(1.1);
-    this.logoPrimary.setInteractive();
-    this.logoPrimary.on("pointerdown", () => {
-      this.scene.start("PlayGame");
-    });
+    // this.logoPrimary.setInteractive();
 
-    setInterval(() => {
+    this.positionSpace = setInterval(() => {
       if (this.currentPositionSpace == 0) {
         this.currentPositionSpace = 1;
       } else if (this.currentPositionSpace == 1) {
@@ -62,32 +55,43 @@ export class MainMenu extends Scene {
       }
     }, 2500);
 
-    setInterval(() => {
+    this.handleChangeFont = setInterval(() => {
       if (this.currentNumber >= 1) {
         this.currentNumber = 0;
-        this.textStart = this.add
-          .sprite(750, 600, "start-game-1")
-          .setScale(0.5)
-          .setAlpha(1);
+        this.textStart.setTexture("start-game-1");
 
         this.textStart.setInteractive();
       } else {
         this.currentNumber += 1;
-        this.textStart = this.add
-          .sprite(750, 600, "start-game-2")
-          .setScale(0.5)
-          .setAlpha(1);
+        this.textStart.setTexture("start-game-2");
 
         this.textStart.setInteractive();
       }
     }, 1000);
+
+    this.textStart.on("pointerdown", () => {
+      this.startGameSound.play();
+      clearInterval(this.positionSpace);
+      clearInterval(this.handleChangeFont);
+      this.menuSong.stop();
+      setTimeout(() => {
+        this.startGameSound.stop();
+      }, 750);
+      this.scene.start("LoadingPage");
+    });
+
+    // this.logoPrimary.on("pointerdown", () => {
+    //   clearInterval(this.positionSpace);
+    //   clearInterval(this.handleChangeFont);
+    //   this.menuSong.stop();
+    //   this.scene.start("PlayGame");
+    // });
   }
 
   handleMoveUfo(ufo) {
     let setPositionY = Math.round(
       Math.random() * 1250 - Math.random() * 1250 + 5
     );
-    // console.log(setPositionX);
     if (ufo.x >= 1500) {
       ufo.x = 0;
       ufo.y = setPositionY;

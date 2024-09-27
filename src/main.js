@@ -1,6 +1,7 @@
 import { Boot } from "./scenes/Boot";
 import { Game } from "./scenes/Game";
 import { GameOver } from "./scenes/GameOver";
+import { LoadingPage } from "./scenes/LoadingPage";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 
@@ -15,7 +16,7 @@ const config = {
     gravity: { x: 10 },
     default: "arcade",
     arcade: {
-      debug: true,
+      debug: false,
     },
   },
   //   backgroundColor: "#028af8",
@@ -23,7 +24,7 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [Boot, Preloader, MainMenu, Game, GameOver],
+  scene: [Boot, Preloader, MainMenu, LoadingPage, Game, GameOver],
 };
 
 export default new Phaser.Game(config);
